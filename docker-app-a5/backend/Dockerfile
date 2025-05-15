@@ -1,28 +1,24 @@
-FROM node:20-alpine3.18
+FROM node:latest
 
-RUN addgroup app && adduser -S -G app app
+RUN addgroup developer
+RUN adduser --ingroup developer ian
 
-USER app
+USER ian
 
 WORKDIR /app
 
 COPY package*.json ./
 
-# change ownership of the /app directory to the app user
 USER root
 
-# change ownership of the /app directory to the app user
-# chown -R <user>:<group> <directory>
-# chown command changes the user and/or group ownership of for given file.
-RUN chown -R app:app .
+RUN chown -R ian:developer .
 
-# change the user back to the app user
-USER app
+USER ian
 
 RUN npm install
 
-COPY . . 
+COPY . .
 
-EXPOSE 8000 
+EXPOSE 8000
 
-CMD npm start
+CMD npm dev

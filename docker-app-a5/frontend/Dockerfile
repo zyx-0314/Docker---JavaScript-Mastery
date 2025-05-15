@@ -1,12 +1,19 @@
-FROM node:20-alpine3.18
+FROM node:latest
 
-# RUN addgroup app && adduser -S -G app app
+RUN addgroup developer
+RUN adduser --ingroup developer ian
 
-# USER app
+USER ian
 
 WORKDIR /app
 
 COPY package*.json ./
+
+USER root
+
+RUN chown -R ian:developer .
+
+USER ian
 
 RUN npm install
 

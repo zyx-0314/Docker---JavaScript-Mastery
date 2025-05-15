@@ -1,9 +1,14 @@
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import './App.css';
 
-import Home from "./pages/Home";
-import Create from "./pages/Create";
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Routes,
+} from 'react-router-dom';
 
-import "./App.css";
+import Create from './pages/Create';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -18,6 +23,9 @@ function App() {
           </Link>
           <Link to="/create" className="navbar_link">
             Share
+          </Link>
+          <Link to="/create" className="navbar_link">
+            Pupolar
           </Link>
         </div>
       </nav>
